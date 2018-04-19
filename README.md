@@ -6,8 +6,11 @@
   <li> addLast </li>
   <li> removeFirst </li>
   <li> removeLast </li>
-  <peekFirst </li>
+  <li> peekFirst </li>
   <li> peekLast </li>
+  <li> removeFirstOccurrence </li>
+  <li> removeLastOccurrence </li>
+  </ul>
   
 <b> To-Do list </b>
   <ol> <li> Choose the most important methods from the API and add them to our interface </li>
