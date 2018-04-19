@@ -11,13 +11,13 @@ public interface Deque {
 
     public String removeLast();
 
-    public String removeFirstOccurence (String s);
+    public boolean removeFirstOccurence (String s);
 
-    public String removeLastOccurence (String s);
+    public boolean removeLastOccurence (String s);
 
-    //public String peekFront();
+    public String peekFront();
 
-    //public String peekLast();
+    public String peekLast();
 
     //public int size();
     

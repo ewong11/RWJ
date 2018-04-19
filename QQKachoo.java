@@ -41,14 +41,15 @@ public class QQKachoo implements Deque {
 	if (size == 0)
 	    return null;
 	else if (size == 1) {
-	    String retStr = head.getValue();
+	    String retStr = head.getCargo();
 	    head = end = null;
 	    size--;
 	    return retStr;
 	}
 	else {   
-	    String retStr = head.getValue();
+	    String retStr = head.getCargo();
 	    head = head.getNext();
+	    head.setPrev(null);
 	    size--;
 	    return retStr;
 	}
@@ -59,14 +60,15 @@ public class QQKachoo implements Deque {
 	if (size == 0)
 	    return null;
 	else if (size == 1) {
-	    String retStr = end.getValue();
+	    String retStr = end.getCargo();
 	    end = head = null;
 	    size--;
 	    return retStr;
 	}
 	else {
-	    String retStr = end.getValue();
+	    String retStr = end.getCargo();
 	    end = end.getPrev();
+	    end.setNext(null);
 	    size--;
 	    return retStr;
 	}
@@ -118,7 +120,15 @@ public class QQKachoo implements Deque {
 	}
 	return false;
     }
-	
+
+    public String peekFront() {
+	return head.getCargo();
+    }
+
+    public String peekLast() {
+	return end.getCargo();
+    }
+    
     public String toString() {
 	String retStr = "";
 	DLLNode temp = head;
@@ -126,13 +136,53 @@ public class QQKachoo implements Deque {
 	    retStr += temp.getCargo() + " ";
 	    temp = temp.getNext();
 	}
+	return retStr;
     }
+    
     public static void main(String[] args) {
 	QQKachoo test = new QQKachoo();
 
-	test.addFirst("this");
-	test.addFirst("is");
-	test.addFirst("us");
-	test.addFirst("fin");
+	test.addFirst("four");
+	test.addLast("five");
+	test.addFirst("three");
+	test.addFirst("two");
+	test.addFirst("one");
+	test.addLast("six");
+	test.addFirst("first");
+	test.addLast("last");
+	System.out.println(test);
+	System.out.println(test.peekFront());
+	System.out.println(test.peekLast());
+	test.removeFirst();
+	System.out.println(test.peekFront());
+	
+	/*
+	test.removeFirst();
+	test.removeFirst();
+	System.out.println(test);
+	test.removeLast();
+	test.removeLast();
+	System.out.println(test);
+	test.removeFirstOccurence("four");
+	test.removeLastOccurence("three");
+	test.removeLastOccurence("hauidhashu");
+	System.out.println(test);
+	/*
+	QQKachoo test2 = new QQKachoo();
+	test2.addFirst("HI");
+	test2.addFirst("hello");
+	test2.addFirst("HI");
+	test2.addFirst("hello");
+	test2.addFirst("HI");
+	test2.addFirst("hello");
+	test2.addFirst("HI");
+	test2.addFirst("hello");
+	System.out.println(test2);
+
+	test2.removeFirstOccurence("HI");
+	test2.removeLastOccurence("hello");
+	System.out.println(test2);
+	*/
+	
     }
 }
