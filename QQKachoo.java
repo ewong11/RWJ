@@ -36,19 +36,42 @@ public class QQKachoo implements Deque {
 	}
     }
 
+    
     public String removeFirst() {
-	String retStr = head.getValue();
-	head = head.getNext();
-	size--;
-	return retStr;
-    }
+	if (size == 0)
+	    return null;
+	else if (size == 1) {
+	    String retStr = head.getValue();
+	    head = end = null;
+	    size--;
+	    return retStr;
+	}
+	else {   
+	    String retStr = head.getValue();
+	    head = head.getNext();
+	    size--;
+	    return retStr;
+	}
+    } // end removeFirst()
+    
 
     public String removeLast() {
-	String retStr = end.getValue();
-	end = end.getPrev();
-	size--;
-	return retStr;	
-    }
+	if (size == 0)
+	    return null;
+	else if (size == 1) {
+	    String retStr = end.getValue();
+	    end = head = null;
+	    size--;
+	    return retStr;
+	}
+	else {
+	    String retStr = end.getValue();
+	    end = end.getPrev();
+	    size--;
+	    return retStr;
+	}
+    } // end removeLast()
+    
 
     public boolean removeFirstOccurence (String s) {
 	DLLNode temp = head; //create an alias
