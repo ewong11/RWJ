@@ -1,6 +1,7 @@
 pubic interface Deque extends Queue {
     //public boolean add(String s);
 
+/*
     public void addFirst(String s);
 
     public void addLast(String s);
@@ -12,3 +13,4 @@ pubic interface Deque extends Queue {
     //public String peek();
 
     public int size();
+    */
