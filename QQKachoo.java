@@ -31,6 +31,21 @@ public class QQKachoo implements Deque {
       }
     }
 
+    public String removeFirst() {
+	String retStr = head.getValue();
+	head = head.getNext();
+	size--;
+	return retStr;
+    }
+
+    public String removeLast() {
+	String retStr = end.getValue();
+	end = end.getPrev();
+	size--;
+	return retStr;	
+    }
+
+    
 /*
     public String toString() {
       String retStr = "";
