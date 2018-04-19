@@ -45,7 +45,7 @@ public class QQKachoo<T> implements Deque<T> {
 	    size--;
 	    return retStr;
 	}
-	else {   
+	else {
 	    T retStr = head.getCargo();
 	    head = head.getNext();
 	    head.setPrev(null);
@@ -53,7 +53,7 @@ public class QQKachoo<T> implements Deque<T> {
 	    return retStr;
 	}
     } // end removeFirst()
-    
+
 
     public T removeLast() {
 	if (size == 0)
@@ -72,7 +72,7 @@ public class QQKachoo<T> implements Deque<T> {
 	    return retStr;
 	}
     } // end removeLast()
-    
+
 
     public boolean removeFirstOccurence (T s) {
 	DLLNode<T> temp = head; //create an alias
@@ -122,6 +122,19 @@ public class QQKachoo<T> implements Deque<T> {
 	return false;
     }
 
+    public boolean contains(T s) {
+      DLLNode<T> temp = head;
+      for (int i = 0; i < size; i++) {
+        if (temp.getCargo().equals(s)) {
+          return true;
+        }
+        else {
+          temp = temp.getNext();
+        }
+      }
+      return false;
+    }
+
     public T peekFront() {
 	return head.getCargo();
     }
@@ -129,7 +142,7 @@ public class QQKachoo<T> implements Deque<T> {
     public T peekLast() {
 	return end.getCargo();
     }
-    
+
     public String toString() {
 	String retStr = "";
 	DLLNode<T> temp = head;
@@ -147,7 +160,7 @@ public class QQKachoo<T> implements Deque<T> {
     public boolean isEmpty() {
 	return size == 0;
     }
-    
+
     public static void main(String[] args) {
 	QQKachoo<String> test = new QQKachoo<String>();
 
@@ -159,23 +172,33 @@ public class QQKachoo<T> implements Deque<T> {
 	test.addLast("six");
 	test.addFirst("first");
 	test.addLast("last");
+  System.out.println(test.contains("iubaubdciqwkv"));
+  System.out.println(test.contains("i"));
+  System.out.println(test.contains("five"));
+  /*
 	System.out.println(test);
 	System.out.println(test.peekFront());
 	System.out.println(test.peekLast());
 	test.removeFirst();
 	System.out.println(test.peekFront());
-	
+  */
+
 	test.removeFirst();
 	test.removeFirst();
 	System.out.println(test);
+  System.out.println(test.contains("one"));
 	test.removeLast();
 	test.removeLast();
+  System.out.println(test);
+  System.out.println(test.contains("three"));
+  System.out.println(test);
+  System.out.println(test.contains("six"));
 	System.out.println(test);
 	test.removeFirstOccurence("four");
 	test.removeLastOccurence("three");
 	test.removeLastOccurence("hauidhashu");
 	System.out.println(test);
-	
+/*
 	QQKachoo<String> test2 = new QQKachoo<String>();
 	test2.addFirst("HI");
 	test2.addFirst("hello");
@@ -190,7 +213,7 @@ public class QQKachoo<T> implements Deque<T> {
 	test2.removeFirstOccurence("HI");
 	test2.removeLastOccurence("hello");
 	System.out.println(test2);
-	
-	
+*/
+
     }
 }
