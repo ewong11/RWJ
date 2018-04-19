@@ -1,24 +1,26 @@
-public interface Deque {
-    //public boolean add(String s); //necessary?
+public interface Deque<T> {
+    //public boolean add(T s); //necessary?
 
-    public void addFirst(String s);
+    public void addFirst(T s);
 
-    public void addLast(String s);
+    public void addLast(T s);
 
     //are the get methods necessary when we have peek?
     
-    public String removeFirst();
+    public T removeFirst();
 
-    public String removeLast();
+    public T removeLast();
 
-    public boolean removeFirstOccurence (String s);
+    public boolean removeFirstOccurence (T s);
 
-    public boolean removeLastOccurence (String s);
+    public boolean removeLastOccurence (T s);
 
-    public String peekFront();
+    public T peekFront();
 
-    public String peekLast();
+    public T peekLast();
 
-    //public int size();
+    public int size();
+
+    public boolean isEmpty();
     
   }//end interface

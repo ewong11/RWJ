@@ -3,17 +3,17 @@
 //LAB#02 -- All Hands on Deque
 //2018-04-18
 
-public class QQKachoo implements Deque {
+public class QQKachoo<T> implements Deque<T> {
     //instance variables
-    DLLNode head, end;
+    DLLNode<T> head, end;
     int size;
 
     public QQKachoo() {
 	head = end = null;
 	size = 0;
     }
-    public void addFirst(String s) {
-        head = new DLLNode(s, null, head);
+    public void addFirst(T s) {
+        head = new DLLNode<T>(s, null, head);
         if (size == 0) {
 	    end = head;
 	    size++;
@@ -24,8 +24,8 @@ public class QQKachoo implements Deque {
 	}
     }
 
-    public void addLast(String s) {
-	end = new DLLNode(s, end, null);
+    public void addLast(T s) {
+	end = new DLLNode<T>(s, end, null);
 	if (size == 0) {
 	    head = end;
 	    size++;
@@ -36,18 +36,17 @@ public class QQKachoo implements Deque {
 	}
     }
 
-    
-    public String removeFirst() {
+    public T removeFirst() {
 	if (size == 0)
 	    return null;
 	else if (size == 1) {
-	    String retStr = head.getCargo();
+	    T retStr = head.getCargo();
 	    head = end = null;
 	    size--;
 	    return retStr;
 	}
 	else {   
-	    String retStr = head.getCargo();
+	    T retStr = head.getCargo();
 	    head = head.getNext();
 	    head.setPrev(null);
 	    size--;
@@ -56,17 +55,17 @@ public class QQKachoo implements Deque {
     } // end removeFirst()
     
 
-    public String removeLast() {
+    public T removeLast() {
 	if (size == 0)
 	    return null;
 	else if (size == 1) {
-	    String retStr = end.getCargo();
+	    T retStr = end.getCargo();
 	    end = head = null;
 	    size--;
 	    return retStr;
 	}
 	else {
-	    String retStr = end.getCargo();
+	    T retStr = end.getCargo();
 	    end = end.getPrev();
 	    end.setNext(null);
 	    size--;
@@ -75,8 +74,8 @@ public class QQKachoo implements Deque {
     } // end removeLast()
     
 
-    public boolean removeFirstOccurence (String s) {
-	DLLNode temp = head; //create an alias
+    public boolean removeFirstOccurence (T s) {
+	DLLNode<T> temp = head; //create an alias
 	if (head.getCargo().equals(s)) {
 	    head = head.getNext();
 	    head.setPrev(null);
@@ -85,21 +84,22 @@ public class QQKachoo implements Deque {
 	while (temp.getNext() != null) {
 	    if (temp.getNext().getCargo().equals(s)) {
 		temp.setNext(temp.getNext().getNext());
-		temp.getNext().setPrev(temp);
-		return true;
+		if (temp.getNext() != null) {
+		    temp.getNext().setPrev(temp);
+		    return true;
+		}
+		else {
+		    head.setPrev(temp);
+		    return true;
+		}
 	    }
 	    temp = temp.getNext();
-	}
-	if (end.getCargo().equals(s)) {
-	    end = end.getPrev();
-	    end.setNext(null);
-	    return true;
 	}
 	return false;
     }
 
-    public boolean removeLastOccurence (String s) {
-	DLLNode temp = end; //create an alias
+    public boolean removeLastOccurence (T s) {
+	DLLNode<T> temp = end; //create an alias
 	if (end.getCargo().equals(s)) {
 	    end = end.getPrev();
 	    end.setNext(null);
@@ -108,39 +108,48 @@ public class QQKachoo implements Deque {
 	while (temp.getPrev() != null) {
 	    if (temp.getPrev().getCargo().equals(s)) {
 		temp.setPrev(temp.getPrev().getPrev());
-		temp.getPrev().setNext(temp);
-		return true;
+		if (temp.getPrev() != null) {
+		    temp.getPrev().setNext(temp);
+		    return true;
+		}
+		else {
+		    head.setNext(temp);
+		    return true;
+		}
 	    }
 	    temp = temp.getPrev();
-	}
-	if (head.getCargo().equals(s)) {
-	    head = head.getNext();
-	    head.setPrev(null);
-	    return true;
 	}
 	return false;
     }
 
-    public String peekFront() {
+    public T peekFront() {
 	return head.getCargo();
     }
 
-    public String peekLast() {
+    public T peekLast() {
 	return end.getCargo();
     }
     
     public String toString() {
 	String retStr = "";
-	DLLNode temp = head;
+	DLLNode<T> temp = head;
         while (temp != null) {
 	    retStr += temp.getCargo() + " ";
 	    temp = temp.getNext();
 	}
 	return retStr;
     }
+
+    public int size() {
+	return size;
+    }
+
+    public boolean isEmpty() {
+	return size == 0;
+    }
     
     public static void main(String[] args) {
-	QQKachoo test = new QQKachoo();
+	QQKachoo<String> test = new QQKachoo<String>();
 
 	test.addFirst("four");
 	test.addLast("five");
@@ -156,7 +165,6 @@ public class QQKachoo implements Deque {
 	test.removeFirst();
 	System.out.println(test.peekFront());
 	
-	/*
 	test.removeFirst();
 	test.removeFirst();
 	System.out.println(test);
@@ -167,8 +175,8 @@ public class QQKachoo implements Deque {
 	test.removeLastOccurence("three");
 	test.removeLastOccurence("hauidhashu");
 	System.out.println(test);
-	/*
-	QQKachoo test2 = new QQKachoo();
+	
+	QQKachoo<String> test2 = new QQKachoo<String>();
 	test2.addFirst("HI");
 	test2.addFirst("hello");
 	test2.addFirst("HI");
@@ -182,7 +190,7 @@ public class QQKachoo implements Deque {
 	test2.removeFirstOccurence("HI");
 	test2.removeLastOccurence("hello");
 	System.out.println(test2);
-	*/
+	
 	
     }
 }
