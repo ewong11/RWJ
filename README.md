@@ -26,6 +26,7 @@
   <li> getFirst() - similar to peekFirst() </li>
   <li> getLast() - similar to peekLast() </li>
   <li> add (T t) - similar to addLast(T t) </li>
+  </ul><br>
   
   
 <b> To-Do list </b>
