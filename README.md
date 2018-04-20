@@ -23,7 +23,7 @@
   </ul>
   <p> These methods are more functionality to deque, making certain functions easier to execute. While not completely necessary, they add uniqueness that allows the user to do more. </p>
   
-  <p> "Last Priority </p>
+  <p> "Last" Priority </p>
   <ul> 
   <li> void pollFirst() - similar to removeFirst()</li>
   <li> void pollLast() - similar to removeLast()</li>
