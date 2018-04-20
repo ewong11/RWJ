@@ -13,7 +13,7 @@
   </ul>
   <p> These methods the most important methods that allow us to have purpose for deque. Without these fundamental methods, deque will not perform the way that it should. </p>
   
-  <p> Additional methods </pl>
+  <p> Additional Methods </pl>
   <ul>
   <li> boolean removeFirstOccurrence() </li>
   <li> boolean removeLastOccurrence() </li>
@@ -23,14 +23,16 @@
   </ul>
   <p> These methods are more functionality to deque, making certain functions easier to execute. While not completely necessary, they add uniqueness that allows the user to do more. </p>
   
-  <p> Methods that perform similarly to already implemented methods (unecessary to implement, unless time permits) </p>
+  <p> "Last Priority </p>
   <ul> 
   <li> void pollFirst() - similar to removeFirst()</li>
   <li> void pollLast() - similar to removeLast()</li>
   <li> getFirst() - similar to peekFirst() </li>
   <li> getLast() - similar to peekLast() </li>
   <li> add (T t) - similar to addLast(T t) </li>
-  </ul><br>
+  </ul>
+  <p> These methods act very similary to previously made methods so we will only implement these if time permits. </p>
+  <br>
   
 <b> To-Do list </b>
   <ol> <li> Choose the most important methods from the API and add them to our interface </li>
