@@ -1,6 +1,6 @@
 # Team RWJ -- Jason Kim, Raymond Wu, Eric Wong
 
-<p> Our Deque is based on the DLLNode architecture, because it has the fastest runtime. We considered other architectures, espcially ArrayList, since it seemed easier to code, but since it requires the shifting of elements, which in which adding and removing from the front runs in O(n) time, we decided that using DLLNode instead would give us a more efficient algorithm. </p>
+<p> Our Deque is based on the DLLNode architecture, because it has the fastest runtime and best in terms of memory as well. While and implementation of ArrayList could run in the same runtime as DLLNodes, it also causes a "memory leak". We did consider ArrayList, since it seemed easier to code, but since it requires the shifting of elements, in which adding and removing from the front runs in O(n) time, we decided that using DLLNode instead would give us a more efficient algorithm. </p>
 <p> Additionally, we do not have any capacity restrictions, which was a possibility in the deque API. </p>
 <p>Most Crucial Methods</p>
 <ul> 
@@ -45,5 +45,5 @@
   </ol>
       
 <h4> DevPlan </h4>
-<p> To create a working version at first, with basic add and remove methods, creating and test each method one at a time (incremental development). Expand and add additional methods to improve efficiency of our Deque, in time remaining. As we develop more and more methods, we will upadte our main method to test and make sure the methods are all working properly. Once we test, we will add more comments to make sure that any viewer understands the process. That will also help our future-selves.</p>
+<p> To create a working version at first, with basic add and remove methods, creating and test each method one at a time (incremental development). Expand and add additional methods to improve efficiency of our Deque, in time remaining. As we develop more and more methods, we will update our main method to test and make sure the methods are all working properly. Once we test, we will add more comments to make sure that any viewer understands the process. That will also help our future-selves.</p>
 
