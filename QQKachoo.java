@@ -78,6 +78,7 @@ public class QQKachoo<T> implements Deque<T> {
 	DLLNode<T> temp = head; //create an alias
 	if (head.getCargo().equals(s)) {          // if first node = target
 	    removeFirst();                        // this takes care of size conds
+	    size--;
 	    return true;
 	}
 	while (temp.getNext() != null) {                // traversing...
@@ -85,10 +86,12 @@ public class QQKachoo<T> implements Deque<T> {
 		temp.setNext(temp.getNext().getNext()); // set curr node's next --> 2 nodes over
 		if (temp.getNext() != null) {      // if 2 nodes over is NOT null...
 		    temp.getNext().setPrev(temp);  // 2 nodes over's prev = curr node
+		    size--;
 		    return true;
 		}
 		else {                             // if 2 nodes over IS null...
 		    end.setPrev(temp);             // end's prev = curr node (skip upcoming node)
+		    size--;
 		    return true;
 		}
 	    }
@@ -109,6 +112,7 @@ public class QQKachoo<T> implements Deque<T> {
 	DLLNode<T> temp = end; //create an alias
 	if (end.getCargo().equals(s)) {         // if last node = target
 	    removeLast();                       // this takes care of size conds
+	    size--;
 	    return true;
 	}
 	while (temp.getPrev() != null) {                 // traversing backward...
@@ -116,10 +120,12 @@ public class QQKachoo<T> implements Deque<T> {
 		temp.setPrev(temp.getPrev().getPrev());  // set curr node's prev --> 2 nodes back
 		if (temp.getPrev() != null) {      // if 2 nodes over is NOT null
 		    temp.getPrev().setNext(temp);  // 2 nodes back's next = curr node
+		    size--;
 		    return true;
 		}
 		else {                             // if 2 nodes back IS null...
 		    head.setNext(temp);            // head's next = curr node (skip upcoming node)
+		    size-;
 		    return true;                   
 		}
 	    }
