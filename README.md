@@ -11,15 +11,18 @@
   <li> T peekFirst() </li>
   <li> T peekLast() </li>
   </ul>
-  
   <p> These methods the most important methods that allow us to have purpose for deque. Without these fundamental methods, deque will not perform the way that it should. </p>
+  
   <p> Additional methods </pl>
   <ul>
   <li> boolean removeFirstOccurrence() </li>
   <li> boolean removeLastOccurrence() </li>
   <li> boolean contains() </li>
   <li> int size() </li>
+  <li> boolean isEmpty() </li>
   </ul>
+  <p> These methods are more functionality to deque, making certain functions easier to execute. While not completely necessary, they add uniqueness that allows the user to do more. </p>
+  
   <p> Methods that perform similarly to already implemented methods (unecessary to implement, unless time permits) </p>
   <ul> 
   <li> void pollFirst() - similar to removeFirst()</li>
