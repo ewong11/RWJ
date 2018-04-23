@@ -125,7 +125,7 @@ public class QQKachoo<T> implements Deque<T> {
 		}
 		else {                             // if 2 nodes back IS null...
 		    head.setNext(temp);            // head's next = curr node (skip upcoming node)
-		    size-;
+		    size--;
 		    return true;                   
 		}
 	    }
