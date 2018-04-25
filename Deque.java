@@ -11,9 +11,9 @@ public interface Deque<T> {
 
     public T removeLast();
 
-    public boolean removeFirstOccurence (T s);
+    public boolean removeFirstOccurrence (T s);
 
-    public boolean removeLastOccurence (T s);
+    public boolean removeLastOccurrence (T s);
 
     public T peekFront();
 
