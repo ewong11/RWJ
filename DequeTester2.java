@@ -38,6 +38,9 @@ public class DequeTester2 {
 
     //Note that you have methods in QQKachoo that you don't
     //have in the Deque interface!!!!
+    /*
+    System.out.println("d contains \"9\": " d.contains("9"));
+    */
 
   }//end main
 
