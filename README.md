@@ -4,22 +4,22 @@
 <p> Additionally, we do not have any capacity restrictions, which was a possibility in the deque API. </p>
 <p>Most Crucial Methods</p>
 <ul> 
-  <li> void addFirst(T t) </li>
-  <li> void addLast(T t)</li>
-  <li> T removeFirst() </li>
-  <li> T removeLast() </li>
-  <li> T peekFirst() </li>
-  <li> T peekLast() </li>
+  <li> void addFirst(T t) </li> //adds an item to top of deque
+  <li> void addLast(T t)</li> //adds an item to bottom of deque
+  <li> T removeFirst() </li> //removes the item at the top of the deque
+  <li> T removeLast() </li> //removes the item at the bottom of the deque
+  <li> T peekFirst() </li> //looks at the top of the deque
+  <li> T peekLast() </li> //looks at the item at the bottom of the deque
   </ul>
   <p> These methods the most important methods that allow us to have purpose for deque. Without these fundamental methods, deque will not perform the way that it should. </p>
   
   <p> Additional Methods </pl>
   <ul>
-  <li> boolean removeFirstOccurrence() </li>
-  <li> boolean removeLastOccurrence() </li>
-  <li> boolean contains() </li>
-  <li> int size() </li>
-  <li> boolean isEmpty() </li>
+  <li> boolean removeFirstOccurrence() </li> //removes the first occurence of a specified item
+  <li> boolean removeLastOccurrence() </li> //removes the last occurence of a specified item
+  <li> boolean contains() </li> //checks if the deque contains a certain item
+  <li> int size() </li> //returns the number of elements in the deque
+  <li> boolean isEmpty() </li> //checks if the deque has no elements
   </ul>
   <p> These methods are more functionality to deque, making certain functions easier to execute. While not completely necessary, they add uniqueness that allows the user to do more. </p>
   
@@ -46,4 +46,11 @@
       
 <h4> DevPlan </h4>
 <p> To create a working version at first, with basic add and remove methods, creating and test each method one at a time (incremental development). Expand and add additional methods to improve efficiency of our Deque, in time remaining. As we develop more and more methods, we will update our main method to test and make sure the methods are all working properly. Once we test, we will add more comments to make sure that any viewer understands the process. That will also help our future-selves.</p>
+
+<h4> Changes made: </h4>
+<ul>
+  <li> added block comments on top of method declarations to explain what each method does </li>
+  <li> fixed compiling issue (made before fdbck received)</li>
+  <li> added method explanations in README </li>
+  </ul>
 
