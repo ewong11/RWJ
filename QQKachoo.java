@@ -12,6 +12,8 @@ public class QQKachoo<T> implements Deque<T> {
 	head = end = null;  // CHAINED assignment (head = null, end = null)
 	size = 0;           // DEQueue has no nodes upon creation
     }
+    
+    //adds element to front of Deque O(1)
     public void addFirst(T s) {
         head = new DLLNode<T>(s, null, head);  // head becomes added node
         if (size == 0) {    // if starting w/ no nodes... (size not yet updated)
@@ -24,6 +26,7 @@ public class QQKachoo<T> implements Deque<T> {
 	}
     }
 
+    //adds element to end of deque O(1)
     public void addLast(T s) {
 	end = new DLLNode<T>(s, end, null);  // end becomes added node
 	if (size == 0) {    // if starting w/ no nodes (size not yet updated)
@@ -36,6 +39,7 @@ public class QQKachoo<T> implements Deque<T> {
 	}
     }
 
+    //removes the element at 'head' node (front) O(1)
     public T removeFirst() {
 	if (size == 0)     // if no nodes in first place...
 	    return null;   // nothing to remove!
@@ -54,7 +58,7 @@ public class QQKachoo<T> implements Deque<T> {
 	}
     } // end removeFirst()
 
-
+    //removes the element at 'tail' node (end) O(1)
     public T removeLast() {
 	if (size == 0)    // if no nodes in first place...
 	    return null;  // nothing to remove!
@@ -73,7 +77,7 @@ public class QQKachoo<T> implements Deque<T> {
 	}
     } // end removeLast()
 
-
+    //removes the first occurence of an element starting from head s O(n)
     public boolean removeFirstOccurence (T s) {
 	DLLNode<T> temp = head; //create an alias
 	if (head.getCargo().equals(s)) {          // if first node = target
@@ -107,7 +111,8 @@ public class QQKachoo<T> implements Deque<T> {
 	
 	return false;
     }
-
+    
+    //removes the last occurence of an element s O(n)
     public boolean removeLastOccurence (T s) {
 	DLLNode<T> temp = end; //create an alias
 	if (end.getCargo().equals(s)) {         // if last node = target
@@ -141,6 +146,7 @@ public class QQKachoo<T> implements Deque<T> {
 	return false;
     }
 
+    //checks if the element s is present in Deque O(n)
     public boolean contains(T s) {
 	DLLNode<T> temp = head; //create an alias
 	for (int i = 0; i < size; i++) {     // do the following (size) amt of times...
@@ -181,6 +187,7 @@ public class QQKachoo<T> implements Deque<T> {
     }
 
     public static void main(String[] args) {
+	/*----------------TESTING------------------------*/
 	QQKachoo<String> test = new QQKachoo<String>();
 
 	test.addFirst("four");
