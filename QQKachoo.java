@@ -77,12 +77,11 @@ public class QQKachoo<T> implements Deque<T> {
 	}
     } // end removeLast()
 
-    //removes the first occurence of an element starting from head s O(n)
-    public boolean removeFirstOccurence (T s) {
+    //removes the first occurrence of an element starting from head s O(n)
+    public boolean removeFirstOccurrence (T s) {
 	DLLNode<T> temp = head; //create an alias
 	if (head.getCargo().equals(s)) {          // if first node = target
-	    removeFirst();                        // this takes care of size conds
-	    size--;
+	    removeFirst();                        // this takes care of size conds and size--
 	    return true;
 	}
 	while (temp.getNext() != null) {                // traversing...
@@ -112,12 +111,11 @@ public class QQKachoo<T> implements Deque<T> {
 	return false;
     }
     
-    //removes the last occurence of an element s O(n)
-    public boolean removeLastOccurence (T s) {
+    //removes the last occurrence of an element s O(n)
+    public boolean removeLastOccurrence (T s) {
 	DLLNode<T> temp = end; //create an alias
 	if (end.getCargo().equals(s)) {         // if last node = target
-	    removeLast();                       // this takes care of size conds
-	    size--;
+	    removeLast();                       // this takes care of size conds, and size--
 	    return true;
 	}
 	while (temp.getPrev() != null) {                 // traversing backward...
@@ -134,6 +132,7 @@ public class QQKachoo<T> implements Deque<T> {
 		    return true;                   
 		}
 	    }
+	    System.out.println( "> reach 5");
 	    temp = temp.getPrev();                       // update cond for while loop... traverse
 	}
 
@@ -148,16 +147,20 @@ public class QQKachoo<T> implements Deque<T> {
 
     //checks if the element s is present in Deque O(n)
     public boolean contains(T s) {
-	DLLNode<T> temp = head; //create an alias
-	for (int i = 0; i < size; i++) {     // do the following (size) amt of times...
-	    if (temp.getCargo().equals(s)) { // if curr node == target
-		return true;                 // return true
-	    }
-	    else {                           // else, keep traversing thru DEQueue
-		temp = temp.getNext();
-	    }
-	}                                    // finished traversing... target not found
-	return false;                        // return false
+	DLLNode<T> temp = head;               // create an alias
+	while ( temp.getNext() != null ) {    // this cond leaves out the last node
+	    if ( temp.getCargo().equals(s) )
+		return true;                  // iterate through Deque... if found ret true
+	    else
+		temp = temp.getNext();        // else continue to iterate
+	}
+
+	// last chance...
+	if ( end.getCargo().equals(s) )       // consider last node...
+	    return true;
+	else
+	    return false;
+        
     }
 
     public T peekFront() {
@@ -188,58 +191,102 @@ public class QQKachoo<T> implements Deque<T> {
 
     public static void main(String[] args) {
 	/*----------------TESTING------------------------*/
+
+	// create an instance of QQKachoo to test its methods!
 	QQKachoo<String> test = new QQKachoo<String>();
 
-	test.addFirst("four");
-	test.addLast("five");
-	test.addFirst("three");
-	test.addFirst("two");
-	test.addFirst("one");
-	test.addLast("six");
-	test.addFirst("first");
-	test.addLast("last");
-	System.out.println(test.contains("iubaubdciqwkv"));
-	System.out.println(test.contains("i"));
-	System.out.println(test.contains("five"));
-	/*
-	  System.out.println(test);
-	  System.out.println(test.peekFront());
-	  System.out.println(test.peekLast());
-	  test.removeFirst();
-	  System.out.println(test.peekFront());
-	*/
+	// test toString()
+	System.out.print  ( "DEQUE: " );
+	System.out.println( test );            // expecting DEQUE: 
+	
+	// check Deque is empty...
+	System.out.print  ( "empty?: " );
+	System.out.println( test.isEmpty() );  // expecting true...
 
-	test.removeFirst();
-	test.removeFirst();
-	System.out.println(test);
-	System.out.println(test.contains("one"));
-	test.removeLast();
-	test.removeLast();
-	System.out.println(test);
-	System.out.println(test.contains("three"));
-	System.out.println(test);
-	System.out.println(test.contains("six"));
-	System.out.println(test);
-	test.removeFirstOccurence("four");
-	test.removeLastOccurence("three");
-	test.removeLastOccurence("hauidhashu");
-	System.out.println(test);
-	/*
-	  QQKachoo<String> test2 = new QQKachoo<String>();
-	  test2.addFirst("HI");
-	  test2.addFirst("hello");
-	  test2.addFirst("HI");
-	  test2.addFirst("hello");
-	  test2.addFirst("HI");
-	  test2.addFirst("hello");
-	  test2.addFirst("HI");
-	  test2.addFirst("hello");
-	  System.out.println(test2);
+	// add an element to front of Deque...
+	test.addFirst( "Water" );
 
-	  test2.removeFirstOccurence("HI");
-	  test2.removeLastOccurence("hello");
-	  System.out.println(test2);
-	*/
+	// test addFirst()
+	System.out.print  ( "DEQUE: " );
+	System.out.println( test );            // expecting DEQUE: Water
+
+	// retest isEmpty...
+	System.out.print  ( "empty?: " );
+	System.out.println( test.isEmpty() );  // expecting false... 
+
+	// add an element preceding sole existing element
+	test.addFirst( "Sparkling" );
+	
+	System.out.print  ( "DEQUE: " );
+	System.out.println( test );            // expecting DEQUE: Sparkling Water
+
+	// add an element at end
+	test.addLast( "Healthy?" );
+
+	System.out.print  ( "DEQUE: " );
+	System.out.println( test );            // expecting DEQUE: Sparkling Water Healthy?
+
+	// add element of same cargo to Deque
+	test.addLast( "Water" );
+
+	System.out.print  ( "DEQUE: " );
+	System.out.println( test );            // expecting DEQUE: Sparkling Water Healthy? Water
+
+	// add third element of same cargo to Deque
+	test.addLast( "Water" );
+
+	System.out.print  ( "DEQUE: " );
+	System.out.println( test );            // expecting DEQUE: Sparkling Water Healthy? Water Water
+
+
+	// test peek methods
+	System.out.print  ( "front: ");
+	System.out.println( test.peekFront() );     // expecting Sparkling
+	System.out.print  ( "last: ");
+	System.out.println( test.peekLast() );      // expecting Water
+
+	// test size() method
+	System.out.print  ( "size: ");
+	System.out.println( test.size() );          // expecting 5
+	
+	// remove first occurrence of "Water"
+	System.out.println( "remove 1st inst of \"Water\"  ... ");
+	test.removeFirstOccurrence("Water");
+
+	System.out.print  ( "DEQUE: " );
+	System.out.println( test );            // expecting DEQUE: Sparkling Healthy? Water Water
+
+	// remove last occurrence of "Water"
+	System.out.println( "remove last inst of \"Water\" ... ");
+	test.removeLastOccurrence("Water");
+
+	System.out.print  ( "DEQUE: " );
+	System.out.println( test );            // expecting DEQUE: Sparkling Healthy? Water
+
+	// test contains() ...
+	System.out.print ( "contains \"Water\"? " );
+	System.out.println( test.contains("Water") );  // expecting true
+
+	// test removeLast();
+	System.out.println( "remove last elem ..." );
+	test.removeLast();
+
+	System.out.print  ( "DEQUE: ");
+	System.out.println( test );            // expecting DEQUE: Sparkling Healthy?
+
+	// verify contains() works ...
+	System.out.print ( "contains \"Water\"? " );
+	System.out.println( test.contains("Water") );	// expecting false
+
+
+	// test removeFirst()
+	System.out.println( "remove first elem ...");
+	test.removeFirst();
+
+	System.out.print  ( "DEQUE: ");
+	System.out.println( test );           // expecting DEQUE: Healthy?
+
+			   
 
     }
 }
