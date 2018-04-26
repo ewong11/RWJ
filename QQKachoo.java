@@ -8,10 +8,18 @@ public class QQKachoo<T> implements Deque<T> {
     DLLNode<T> head, end;
     int size;
 
+    //CONSTRUCTOR
+    
     public QQKachoo() {
 	head = end = null;  // CHAINED assignment (head = null, end = null)
 	size = 0;           // DEQueue has no nodes upon creation
-    }
+    } //end QQKachoo()
+    
+    //END OF CONSTRUCTOR
+
+    
+    
+    //ADD AND REMOVE
     
     //adds element to front of Deque O(1)
     public void addFirst(T s) {
@@ -24,7 +32,7 @@ public class QQKachoo<T> implements Deque<T> {
 	    head.getNext().setPrev(head); // added node precedes old head 
 	    size++;                       // update size
 	}
-    }
+    } //end addFirst()
 
     //adds element to end of deque O(1)
     public void addLast(T s) {
@@ -37,7 +45,7 @@ public class QQKachoo<T> implements Deque<T> {
 	    end.getPrev().setNext(end);   // added node succeeds old end
 	    size++;                       // update size
 	}
-    }
+    } //end addLast()
 
     //removes the element at 'head' node (front) O(1)
     public T removeFirst() {
@@ -109,8 +117,8 @@ public class QQKachoo<T> implements Deque<T> {
 	}
 	
 	return false;
-    }
-    
+    } //end removeFirstOccurrence()
+
     //removes the last occurrence of an element s O(n)
     public boolean removeLastOccurrence (T s) {
 	DLLNode<T> temp = end; //create an alias
@@ -143,7 +151,53 @@ public class QQKachoo<T> implements Deque<T> {
 	}
 	
 	return false;
-    }
+    } //end removeLastOccurence()
+
+    //END OF ADD AND REMOVE
+
+
+    //ACCESSORS
+    
+    //see what element is at the head O(1)
+    public T peekFront() {
+	return head.getCargo();
+    } //end peekFront()
+
+    //see what element is at the end O(1)
+    public T peekLast() {
+	return end.getCargo();
+    } //end peekLast()
+
+    //END OF ACCESSORS
+
+    
+    //TOSTRING
+    
+    //turns the deque into a readable string 
+    public String toString() {
+	String retStr = "";
+	DLLNode<T> temp = head;
+        while (temp != null) {
+	    retStr += temp.getCargo() + " ";
+	    temp = temp.getNext();
+	}
+	return retStr;
+    } //end toString()
+
+    //END OF TOSTRING
+
+
+    //HELPER METHODS
+    
+    //returns the current size of the deque
+    public int size() {
+	return size;
+    } //end size()
+
+    //returns if the deque is empty
+    public boolean isEmpty() {
+	return size == 0;
+    } //end isEmpty()
 
     //checks if the element s is present in Deque O(n)
     public boolean contains(T s) {
@@ -161,33 +215,9 @@ public class QQKachoo<T> implements Deque<T> {
 	else
 	    return false;
         
-    }
+    } //end contains()
 
-    public T peekFront() {
-	return head.getCargo();
-    }
-
-    public T peekLast() {
-	return end.getCargo();
-    }
-
-    public String toString() {
-	String retStr = "";
-	DLLNode<T> temp = head;
-        while (temp != null) {
-	    retStr += temp.getCargo() + " ";
-	    temp = temp.getNext();
-	}
-	return retStr;
-    }
-
-    public int size() {
-	return size;
-    }
-
-    public boolean isEmpty() {
-	return size == 0;
-    }
+    //END OF HELPER METHODS
 
     public static void main(String[] args) {
 	/*----------------TESTING------------------------*/
