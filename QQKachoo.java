@@ -23,6 +23,12 @@ public class QQKachoo<T> implements Deque<T> {
     
     //adds element to front of Deque O(1)
     public void addFirst(T s) {
+ 
+	// in accordance with the API...
+	if (s == null)
+	    throw new NullPointerException("specified element is null and this deque does not permit null elements");
+
+	
         head = new DLLNode<T>(s, null, head);  // head becomes added node
         if (size == 0) {    // if starting w/ no nodes... (size not yet updated)
 	    end = head;     // b/c added node is only node... head = end
@@ -36,6 +42,11 @@ public class QQKachoo<T> implements Deque<T> {
 
     //adds element to end of deque O(1)
     public void addLast(T s) {
+
+	// in accordance with the API...
+	if (s == null)
+	    throw new NullPointerException("specified element is null and this deque does not permit null elements");
+	
 	end = new DLLNode<T>(s, end, null);  // end becomes added node
 	if (size == 0) {    // if starting w/ no nodes (size not yet updated)
 	    head = end;     // b/c added node is only node... head = end
@@ -50,7 +61,9 @@ public class QQKachoo<T> implements Deque<T> {
     //removes the element at 'head' node (front) O(1)
     public T removeFirst() {
 	if (size == 0)     // if no nodes in first place...
-	    return null;   // nothing to remove!
+	    throw new NoSuchElementException("this deque is empty");
+	// in accordance with API...
+	
 	else if (size == 1) {             // if only one node in DEQueue...
 	    T retCar = head.getCargo();   // prep for return...
 	    head = end = null;            // no nodes after removal...
@@ -69,7 +82,9 @@ public class QQKachoo<T> implements Deque<T> {
     //removes the element at 'tail' node (end) O(1)
     public T removeLast() {
 	if (size == 0)    // if no nodes in first place...
-	    return null;  // nothing to remove!
+	    throw new NoSuchElementException("this deque is empty");
+	// in accordance with API...
+	
 	else if (size == 1) {             // if only one node
 	    T retStr = end.getCargo();    // prep for return...
 	    end = head = null;            // no nodes after removal...
@@ -87,6 +102,11 @@ public class QQKachoo<T> implements Deque<T> {
 
     //removes the first occurrence of an element starting from head s O(n)
     public boolean removeFirstOccurrence (T s) {
+
+	// in accordance with API...
+	if (s == null)
+	    throw new NullPointerException("specified element is null and this deque does not permit null elements");
+	
 	DLLNode<T> temp = head; //create an alias
 	if (head.getCargo().equals(s)) {          // if first node = target
 	    removeFirst();                        // this takes care of size conds and size--
@@ -121,6 +141,10 @@ public class QQKachoo<T> implements Deque<T> {
 
     //removes the last occurrence of an element s O(n)
     public boolean removeLastOccurrence (T s) {
+	// in accordance with API...
+	if (s == null)
+	    throw new NullPointerException("specified element is null and this deque does not permit null elements");
+	
 	DLLNode<T> temp = end; //create an alias
 	if (end.getCargo().equals(s)) {         // if last node = target
 	    removeLast();                       // this takes care of size conds, and size--
@@ -159,11 +183,13 @@ public class QQKachoo<T> implements Deque<T> {
     //ACCESSORS
     
     //see what element is at the head O(1)
+    // already in accordance with API b/c returns null if deque is empty
     public T peekFront() {
-	return head.getCargo();
+	return head.getCargo();  
     } //end peekFront()
 
     //see what element is at the end O(1)
+    // already in accordance with API b/c returns null if deque is empty
     public T peekLast() {
 	return end.getCargo();
     } //end peekLast()
@@ -201,6 +227,11 @@ public class QQKachoo<T> implements Deque<T> {
 
     //checks if the element s is present in Deque O(n)
     public boolean contains(T s) {
+
+	// in accordance with API...
+	if (s == null)
+	    throw new NullPointerException("specified element is null and this deque does not permit null elements");
+	
 	DLLNode<T> temp = head;               // create an alias
 	while ( temp.getNext() != null ) {    // this cond leaves out the last node
 	    if ( temp.getCargo().equals(s) )
