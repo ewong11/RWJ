@@ -15,8 +15,8 @@
   
   <p> Additional Methods </pl>
   <ul>
-  <li> boolean removeFirstOccurrence() </li> //removes the first occurence of a specified item
-  <li> boolean removeLastOccurrence() </li> //removes the last occurence of a specified item
+  <li> boolean removeFirstOccurrence() </li> //removes the first occurrence of a specified item
+  <li> boolean removeLastOccurrence() </li> //removes the last occurrence of a specified item
   <li> boolean contains() </li> //checks if the deque contains a certain item
   <li> int size() </li> //returns the number of elements in the deque
   <li> boolean isEmpty() </li> //checks if the deque has no elements
@@ -25,11 +25,11 @@
   
   <p> "Last" Priority </p>
   <ul> 
-  <li> void pollFirst() - similar to removeFirst()</li>
-  <li> void pollLast() - similar to removeLast()</li>
-  <li> getFirst() - similar to peekFirst() </li>
-  <li> getLast() - similar to peekLast() </li>
-  <li> add (T t) - similar to addLast(T t) </li>
+  <li> void pollFirst() - similar to removeFirst()</li> //Never throws an exception
+  <li> void pollLast() - similar to removeLast()</li> //Never throws an exception
+  <li> getFirst() - similar to peekFirst() </li> //Throws exception
+  <li> getLast() - similar to peekLast() </li> //Throws exception
+  <li> add (T t) - similar to addLast(T t) </li> //Returns boolean
   </ul>
   <p> These methods act very similary to previously made methods so we will only implement these if time permits. </p>
   <br>
